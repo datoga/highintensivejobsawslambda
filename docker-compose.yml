@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  localstack:
+    network_mode: bridge
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: localstack-example
+    hostname: localstack
+    ports:
+      - "4566:4566"    
+    environment:
+      # Declare which aws services will be used in localstack      
+      - SERVICES=sqs,iam,s3,lambda
+      - DEBUG=1
+      # These variables are needed for localstack      
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=testUser
+      - AWS_SECRET_ACCESS_KEY=testAccessKey
+      - LAMBDA_EXECUTOR=local
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - DATA_DIR=/tmp/localstack/data
+    volumes:
+#      - "${TMPDIR:-/tmp}/localstack:/tmp/localstack"      #caches previous requests
+      - /var/run/docker.sock:/var/run/docker.sock
+#     - ./create-resources-simple.sh:/docker-entrypoint-initaws.d/create-resources.sh
+      - ./create-resources-screenshots.sh:/docker-entrypoint-initaws.d/create-resources.sh
