@@ -23,5 +23,7 @@ services:
     volumes:
 #      - "${TMPDIR:-/tmp}/localstack:/tmp/localstack"      #caches previous requests
       - /var/run/docker.sock:/var/run/docker.sock
-#     - ./create-resources-simple.sh:/docker-entrypoint-initaws.d/create-resources.sh
-      - ./create-resources-screenshots.sh:/docker-entrypoint-initaws.d/create-resources.sh
+      - ./scripts/00-prerequisites.sh:/docker-entrypoint-initaws.d/00-prerequisites.sh
+      - ./scripts/01-create-resources-common.sh:/docker-entrypoint-initaws.d/01-create-resources-common.sh
+      - ./scripts/02-create-resources-simple.sh:/docker-entrypoint-initaws.d/02-create-resources-simple.sh
+      - ./scripts/03-create-resources-screenshots.sh:/docker-entrypoint-initaws.d/03-create-resources-screenshots.sh
