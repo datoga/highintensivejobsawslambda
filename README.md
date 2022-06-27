@@ -1,4 +1,4 @@
-# Resource intensive jobs: when AWS lambda performs too well  [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#<your-project-url>)
+# Resource intensive jobs: when AWS lambda performs too well  [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://github.com/datoga/highintensivejobsawslambda)
 
 Sample of AWS lambda usage
 
